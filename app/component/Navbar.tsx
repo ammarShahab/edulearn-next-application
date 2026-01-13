@@ -139,7 +139,7 @@ export default function Navbar() {
                   </div>
                 )}
 
-                {/* Hover Effect Line */}
+                {/* Hover Effect Lin */}
                 <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-linear-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
             ))}
