@@ -15,6 +15,7 @@ import {
   ChevronDown,
   LogOut,
 } from "lucide-react";
+import EdulearnLogo from "./Illustrations/EdulearnLogo";
 
 interface NavLink {
   name: string;
@@ -83,9 +84,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2 group">
-              <div className="p-2 bg-linear-to-r from-blue-600 to-purple-600 rounded-lg group-hover:scale-110 transition-transform duration-300">
-                <BookOpen className="w-6 h-6 text-white" />
-              </div>
+              <EdulearnLogo className="w-14 h-14" />
               <span className="text-xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 EduLearn
               </span>

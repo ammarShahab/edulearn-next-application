@@ -12,6 +12,7 @@ import {
   MapPin,
   Heart,
 } from "lucide-react";
+import EdulearnLogo from "./Illustrations/EdulearnLogo";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -23,9 +24,7 @@ export default function Footer() {
           {/* Brand & About */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center space-x-3 mb-6 group">
-              <div className="p-2.5 bg-linear-to-r from-blue-600 to-purple-600 rounded-lg group-hover:scale-105 transition-transform">
-                <BookOpen className="w-7 h-7 text-white" />
-              </div>
+              <EdulearnLogo className="w-12 h-12" />
               <span className="text-2xl font-bold bg-linear-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 EduLearn
               </span>
