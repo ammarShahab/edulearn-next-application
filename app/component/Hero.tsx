@@ -3,30 +3,32 @@
 import { BookOpen, GraduationCap, Sparkles, Users } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import CountUp from "react-countup";
 
+interface StatsData {
+  activeStudents: number;
+  onlineCourses: number;
+}
 export default function Hero() {
   const [isVisible, setIsVisible] = useState<boolean>(true); // ← start visible!
-  const [activeStudents, setActiveStudents] = useState<number>(0);
+  const [stats, setStats] = useState<StatsData>({
+    activeStudents: 500,
+    onlineCourses: 12,
+  });
 
+  // 🔹 Fetch data from backend
   useEffect(() => {
-    // Animate student count only
-    const target = 150000;
-    const duration = 2000;
-    const steps = 60;
-    const increment = target / steps;
-    let current = 0;
-
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        setActiveStudents(target);
-        clearInterval(timer);
-      } else {
-        setActiveStudents(Math.floor(current));
+    const fetchStats = async () => {
+      try {
+        const res = await fetch("/api/stats"); // your backend endpoint
+        const data: StatsData = await res.json();
+        setStats(data);
+      } catch (error) {
+        console.error("Failed to fetch stats", error);
       }
-    }, duration / steps);
+    };
 
-    return () => clearInterval(timer);
+    fetchStats();
   }, []);
 
   return (
@@ -88,24 +90,37 @@ export default function Hero() {
 
             {/* Stats */}
             <div className="flex flex-wrap gap-6 pt-4">
+              {/* Active Students */}
               <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-2xl shadow-md">
                 <div className="p-2 bg-purple-100 rounded-lg">
                   <Users className="w-5 h-5 text-purple-600" />
                 </div>
+
                 <div>
                   <div className="text-2xl font-bold text-gray-900">
-                    {activeStudents.toLocaleString()}+
+                    <CountUp
+                      start={0}
+                      end={stats.activeStudents}
+                      duration={2}
+                      separator=","
+                    />
+                    +
                   </div>
                   <div className="text-sm text-gray-600">Active Students</div>
                 </div>
               </div>
 
+              {/* Online Courses */}
               <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-2xl shadow-md">
                 <div className="p-2 bg-indigo-100 rounded-lg">
                   <BookOpen className="w-5 h-5 text-indigo-600" />
                 </div>
+
                 <div>
-                  <div className="text-2xl font-bold text-gray-900">12+</div>
+                  <div className="text-2xl font-bold text-gray-900">
+                    <CountUp start={0} end={stats.onlineCourses} duration={2} />
+                    +
+                  </div>
                   <div className="text-sm text-gray-600">Online Courses</div>
                 </div>
               </div>
