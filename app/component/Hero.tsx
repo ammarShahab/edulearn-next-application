@@ -4,13 +4,12 @@ import { BookOpen, GraduationCap, Sparkles, Users } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
-
+import { motion } from "motion/react";
 interface StatsData {
   activeStudents: number;
   onlineCourses: number;
 }
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState<boolean>(true); // ← start visible!
   const [stats, setStats] = useState<StatsData>({
     activeStudents: 500,
     onlineCourses: 12,
@@ -43,12 +42,11 @@ export default function Hero() {
       <div className="px-4 sm:px-6 lg:px-8 pt-10 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div
-            className={`space-y-8 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-12"
-            }`}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-8"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-purple-100">
               <Sparkles className="w-4 h-4 text-purple-600" />
@@ -125,15 +123,14 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Image Section */}
-          <div
-            className={`relative flex items-center justify-center transition-all duration-1000 delay-300 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-12"
-            }`}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="relative flex items-center justify-center"
           >
             <div className="relative flex items-center justify-center w-full max-w-xl">
               {/* Decorative elements */}
@@ -145,7 +142,7 @@ export default function Hero() {
                 {/* Next.js Image Component */}
                 <div className="relative w-full h-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/img/edulearn-hero.png" // Replace with your actual image path
+                    src="/img/edulearn-hero.png"
                     alt="Educational content or course preview"
                     width={800}
                     height={1000}
@@ -175,7 +172,7 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div className="absolute top-1/3 -translate-y-1/2 left-2 px-2 py-3 bg-white rounded-2xl shadow-lg flex items-center gap-2 z-10 ">
+                <div className="absolute top-1/3 -translate-y-1/2 left-2 px-2 py-3 bg-white rounded-2xl shadow-lg flex items-center gap-2 z-10">
                   <div className="flex -space-x-2">
                     <div className="w-8 h-8 bg-purple-400 rounded-full border-2 border-white"></div>
                     <div className="w-8 h-8 bg-indigo-400 rounded-full border-2 border-white"></div>
@@ -187,7 +184,7 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
