@@ -72,7 +72,7 @@ export default function Hero() {
             </div>
 
             <p className="text-lg text-gray-600 max-w-xl">
-              Free online courses from the world's leading experts.
+              from the world&apos;s leading experts
               <br />
               Join{" "}
               <span className="font-bold text-purple-600">
