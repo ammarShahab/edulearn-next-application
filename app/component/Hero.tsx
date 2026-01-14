@@ -19,13 +19,13 @@ export default function Hero() {
   // 🔹 Fetch data from backend
   useEffect(() => {
     const fetchStats = async () => {
-      try {
+      /* try {
         const res = await fetch("/api/stats"); // your backend endpoint
         const data: StatsData = await res.json();
         setStats(data);
       } catch (error) {
         console.error("Failed to fetch stats", error);
-      }
+      } */
     };
 
     fetchStats();
@@ -137,7 +137,7 @@ export default function Hero() {
           >
             <div className="relative flex items-center justify-center w-full max-w-xl">
               {/* Decorative elements */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-linear-to-br from-purple-400 to-indigo-500 rounded-3xl transform rotate-12 animate-bounce"></div>
+              <div className="absolute -top-6 -right-6 w-24 h-24 bg-linear-to-br from-purple-400 to-indigo-500 rounded-3xl transform rotate-12 animate-bounce [animation-duration:5s]"></div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-linear-to-br from-pink-400 to-purple-500 rounded-full animate-pulse"></div>
 
               {/* Main image container */}
@@ -156,7 +156,7 @@ export default function Hero() {
                 </div>
 
                 {/* Floating badges */}
-                <div className="absolute top-4 left-2 px-4 py-2 bg-white rounded-full shadow-lg flex items-center gap-2 animate-bounce z-10">
+                <div className="absolute top-4 left-2 px-4 py-2 bg-white rounded-full shadow-lg flex items-center gap-2 z-10 animate-bounce [animation-duration:5s]">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                   <span className="text-sm font-medium text-gray-700">
                     Lifetime Access
@@ -190,30 +190,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes bounce {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-
-        .animate-bounce {
-          animation: bounce 10s ease-in-out infinite;
-        }
-
-        .delay-5000 {
-          animation-delay: 12s;
-        }
-
-        .delay-2000 {
-          animation-delay: 12s;
-        }
-      `}</style>
     </div>
   );
 }
