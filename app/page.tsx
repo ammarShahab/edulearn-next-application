@@ -1,8 +1,9 @@
-import Image from "next/image";
+import Hero from "./component/Hero";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen max-w-7xl mx-auto flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <main className="min-h-screen max-w-7xl mx-auto bg-white dark:bg-black sm:items-start">
+      <Hero />
       {/*  <Image
         className="dark:invert"
         src="/next.svg"
