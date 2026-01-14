@@ -5,18 +5,16 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(true); // ← start visible!
   const [activeStudents, setActiveStudents] = useState<number>(0);
 
   useEffect(() => {
-    setIsVisible(true);
-
-    // Animate student count
-    const target: number = 150000;
-    const duration: number = 2000;
-    const steps: number = 60;
-    const increment: number = target / steps;
-    let current: number = 0;
+    // Animate student count only
+    const target = 150000;
+    const duration = 2000;
+    const steps = 60;
+    const increment = target / steps;
+    let current = 0;
 
     const timer = setInterval(() => {
       current += increment;
@@ -32,7 +30,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="min-h-screen">
       {/* Animated background elements */}
       <div className="inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
@@ -40,7 +38,7 @@ export default function Hero() {
         <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-2000"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
+      <div className="px-4 sm:px-6 lg:px-8 pt-10 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div
