@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="flex min-h-screen max-w-7xl mx-auto flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-      <Image
+      {/*  <Image
         className="dark:invert"
         src="/next.svg"
         alt="Next.js logo"
@@ -57,7 +57,7 @@ export default function Home() {
         >
           Documentation
         </a>
-      </div>
+      </div> */}
     </main>
   );
 }
