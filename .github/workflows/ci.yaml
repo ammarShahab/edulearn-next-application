@@ -31,8 +31,5 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      # - name: Run Test (if present)
-      #   run: npm test --if-test
-
       - name: Build (Next.js)
         run: npm run build
